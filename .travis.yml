@@ -1,5 +1,7 @@
 language:
 - java
+rvm:
+- 2.3.0
 services:
 - mysql
 jdk:
