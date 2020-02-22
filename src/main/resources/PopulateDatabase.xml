@@ -63,18 +63,30 @@
 	</bean>
 	
 	<bean id="vacaciones1" class="domain.Vacaciones">
-		<property name="dias_totales" value="20" />
-		<property name="dias_usados" value="12" />
+		<property name="dias_totales" value="22" />
+		<property name="dias_usados" value="3" />
 	</bean>
 	
 	<bean id="diasPersonales1" class="domain.DiasPersonales">
 		<property name="dias_totales" value="2" />
-		<property name="dias_usados" value="1" />
+		<property name="dias_usados" value="0" />
 	</bean>
 	
 	<bean id="reservas1" class="domain.Reservas">
 		<property name="tipo" value="Vacaciones" />
-		<property name="fecha" value="1" />
+		<property name="fecha" value="25/02/2020" />
+		<property name="estado" value="Concedidas" />
+	</bean>
+	
+	<bean id="reservas2" class="domain.Reservas">
+		<property name="tipo" value="Vacaciones" />
+		<property name="fecha" value="26/02/2020" />
+		<property name="estado" value="Concedidas" />
+	</bean>
+	
+	<bean id="reservas3" class="domain.Reservas">
+		<property name="tipo" value="Vacaciones" />
+		<property name="fecha" value="27/02/2020" />
 		<property name="estado" value="Concedidas" />
 	</bean>
 	
@@ -92,6 +104,8 @@
 		<property name="reservas">
 			<list>
 				<ref bean="reservas1"/>
+				<ref bean="reservas2"/>
+				<ref bean="reservas3"/>
 			</list>
 		</property>
 	</bean>

@@ -21,7 +21,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import domain.Empleado;
+import domain.Reservas;
 import domain.Vacaciones;
+import services.ActorService;
+import services.EmpleadoService;
 import services.VacacionesService;
 
 @Controller
@@ -32,6 +36,12 @@ public class WelcomeController extends AbstractController {
 	
 	@Autowired
 	VacacionesService vacacionesService;
+	
+	@Autowired
+	ActorService actorService;
+	
+	@Autowired
+	EmpleadoService empleadoService;
 	
 	// Constructors -----------------------------------------------------------
 	
@@ -46,17 +56,27 @@ public class WelcomeController extends AbstractController {
 		ModelAndView result;
 		SimpleDateFormat formatter;
 		String moment;
-		List<Vacaciones> vacaciones;
-		
+		Empleado empleado;
+		Vacaciones vacaciones;
+		List<Reservas> reservas;
 		
 		formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		moment = formatter.format(new Date());
-		vacaciones = new ArrayList<Vacaciones>(vacacionesService.findAll());
 		
 		result = new ModelAndView("welcome/index");
 		result.addObject("name", name);
 		result.addObject("moment", moment);
-		result.addObject("vacaciones", vacaciones);
+		
+		if(actorService.checkLogin()) {
+			
+			empleado = empleadoService.findOne(actorService.findByPrincipal().getId());
+			vacaciones = empleado.getVacaciones();
+			reservas = new ArrayList<Reservas>(empleado.getReservas());
+			
+			result.addObject("vacaciones", vacaciones);
+			result.addObject("reservas", reservas);
+			result.addObject("empleado", empleado);
+		}
 
 		return result;
 	}
