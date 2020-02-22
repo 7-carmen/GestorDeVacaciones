@@ -8,6 +8,8 @@ jdk:
 - oraclejdk7
 before_install:
 - mysql -u root < initialize.sql
+- gem update --system
+- gem --version
 after_success:
 - bash herokuDB.sh
 - ls -lah
