@@ -8,9 +8,7 @@ jdk:
 - oraclejdk7
 before_install:
 - mysql -u root < initialize.sql
-- rvm install 2.6.0
-- gem update --system
-- gem --version
+- rvm install 2.3.0
 - gem install faraday -v 0.17.3
 after_success:
 - bash herokuDB.sh
