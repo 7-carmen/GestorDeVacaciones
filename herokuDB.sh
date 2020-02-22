@@ -14,4 +14,4 @@ sed -i 's/ACME-Us3r-P@ssw0rd/'$jdbcPassword'/g' src/main/resources/spring/config
 ##### Populate the database
 
 mvn clean install -Dmaven.test.skip=true
-mvn exec:java -Dexec.mainClass="utilities.PopulateDatabase"
+#mvn exec:java -Dexec.mainClass="utilities.PopulateDatabase"
