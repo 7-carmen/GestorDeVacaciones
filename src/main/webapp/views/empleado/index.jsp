@@ -1,7 +1,7 @@
 <%--
- * index.jsp
+ * action-1.jsp
  *
- * Copyright (C) 2014 Universidad de Sevilla
+ * Copyright (C) 2013 Universidad de Sevilla
  * 
  * The use of this project is hereby constrained to the conditions of the 
  * TDG Licence, a copy of which you may download from 
@@ -16,13 +16,4 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<p><spring:message code="welcome.greeting.prefix" /> ${name}<spring:message code="welcome.greeting.suffix" /></p>
-
-<p><spring:message code="welcome.greeting.current.time" /> ${moment}</p> 
-
-<security:authorize access="hasRole('EMPLEADO')">
-<display:table name="vacaciones" id="row" pagesize="5" class="displaytag">
-	<spring:message code="welcome.dias.totales" var="DiasTotalesHeader" />
-	<display:column property="dias_totales"  title="${DiasTotalesHeader}" sortable="true" />
-</display:table>
-</security:authorize>
+<p>Me pica el pene mucho, equisde</p>
