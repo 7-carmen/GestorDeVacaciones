@@ -26,7 +26,7 @@ before_deploy:
 - ls -lah
 deploy:
   provider: heroku
-  app: shipmee
+  app: gestor-de-vacaciones
   skip_cleanup: true
   api_key:
     secure: CV7nfVOKvxXXJxpGJVH6cogholnKVjalJBZvL6k6gpYHILRadS8s6xv+Nnl92OUGwX8TfSd/aysc/WKgkmq3FAHE6MrpHIpC/7NA+h5Yn47uA2zej1Jd8sPBv1IKlIc14DDMv3J9cnOOJg98PnQszT4UjK+Ey1oDE/eP28ESSYxw/DskA78cbzGqpYKouo/wFSXZl4Z7GC4HHxIM71xRLttK3fsBRMaCJRus/Xs0h7KypzHxCAJ8XTRbHA/FtE9UaIGcbRs7FP6fql2tK6amr1x4kbTpWVyQ7C5cFURHp0v8onoguU+ZARkQso5sA6j18Gg73oGF+puqh25KAM0OvqJizJPtjzadepqIA8dZUUwsdmGmr9i0TrWTHyLEc6F6EydSBbplSR0HYCE7ugQe//atq+/EFp2PrZDPJ+RPfkA+AMbzAumIzKb3/4lo/u+PCcoRz/eksinLCzBelOBL2B6cGXxDOuzlYkmv+7fff0q2pKLl3yw8UPCu6qUTSFR71Eypf2/2QrNI0KRPIlVkIGujpJ1F4Rzmb1V3e+U8zW3Cn7USQh7QN9HQiuWekEzMBFLcHMQSBl9voPaWM45gyrxKGihaRsgythCcR3DiH2HWaD64aqpAIE1sT/qcZcW96GGUM7E8iicxwR3ij2p2q5EdgkSnDKSUmKwDtf3Zwd8=
