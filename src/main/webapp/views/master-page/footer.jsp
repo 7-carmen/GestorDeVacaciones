@@ -15,5 +15,8 @@
 <jsp:useBean id="date" class="java.util.Date" />
 
 <hr />
-
-<b>Copyright &copy; <fmt:formatDate value="${date}" pattern="yyyy" /> Sample Co., Inc.</b>
+<div id="footer">
+  <div class="container">
+    <p class="text-muted credit">Copyright &copy; <fmt:formatDate value="${date}" pattern="yyyy" /> Gestor de Vacaciones 3.0</p>
+  </div>
+</div>

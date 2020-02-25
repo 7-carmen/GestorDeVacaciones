@@ -15,7 +15,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
-
+<div id="login">
 <form:form action="j_spring_security_check" modelAttribute="credentials">
 
 	<form:label path="username">
@@ -23,14 +23,14 @@
 	</form:label>
 	<form:input path="username" />	
 	<form:errors class="error" path="username" />
-	<br />
+	<br /><br />
 
 	<form:label path="password">
 		<spring:message code="security.password" />
 	</form:label>
 	<form:password path="password" />	
 	<form:errors class="error" path="password" />
-	<br />
+	<br /><br />
 	
 	<jstl:if test="${showError == true}">
 		<div class="error">
@@ -41,3 +41,4 @@
 	<input type="submit" value="<spring:message code="security.login" />" />
 	
 </form:form>
+</div>
