@@ -46,6 +46,10 @@ img{
     margin-top: 363px
 }
 
+.modal-footer{
+	margin-top: 1ch;
+}
+
 .cabecera li{
 	list-style-type: none;
 }

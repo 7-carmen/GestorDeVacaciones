@@ -15,12 +15,15 @@ import repositories.ReservasRepository;
 @Transactional
 
 public class ReservasService {;
-	// Managed repository -----------------------------------------------------
+		// Managed repository -----------------------------------------------------
 
 		@Autowired
 		private ReservasRepository reservasRepository;
 		
 		// Supporting services ----------------------------------------------------
+		
+		@Autowired
+		private EmpleadoService empleadoService;
 		
 		// Constructors -----------------------------------------------------------
 		
@@ -34,6 +37,7 @@ public class ReservasService {;
 			Reservas result;
 			
 			result = new Reservas();
+			result.setEmpleado(empleadoService.findByPrincipal());
 			
 			return result;
 		}

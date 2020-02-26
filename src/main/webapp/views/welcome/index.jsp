@@ -33,12 +33,34 @@
 <p style="font-weight: bold;"><spring:message code="welcome.dias.departamento" /> <spam style="font-weight: normal;">${empleado.departamento.nombre}</spam></p>
 <p style="font-weight: bold;"><spring:message code="welcome.dias.totales" /> <spam style="font-weight: normal;">${vacaciones.dias_totales}</spam>&nbsp;&nbsp;&nbsp;
 <spring:message code="welcome.dias.usados" /> <spam style="font-weight: normal;">${vacaciones.dias_usados}</spam>&nbsp;&nbsp;&nbsp;
-<spring:message code="welcome.dias.disponibles" /> <spam style="font-weight: normal;">${vacaciones.dias_totales-vacaciones.dias_usados}</spam>&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-Reservar</button></p>
+<spring:message code="welcome.dias.disponibles" /> <spam style="font-weight: normal;">${vacaciones.dias_totales-vacaciones.dias_usados}</spam>&nbsp;&nbsp;&nbsp;
+<jstl:choose>
+	<jstl:when test="${vacaciones.dias_totales-vacaciones.dias_usados=='0'}">
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" disabled>
+		Reservar</button>
+	</jstl:when>
+	<jstl:otherwise>
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+		Reservar</button>
+	</jstl:otherwise>
+</jstl:choose>
+</p>
 <p style="font-weight: bold;"><spring:message code="welcome.dias.totales" /> <spam style="font-weight: normal;">${diasPersonales.dias_totales}</spam>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <spring:message code="welcome.dias.usados" /> <spam style="font-weight: normal;">${diasPersonales.dias_usados}</spam>&nbsp;&nbsp;&nbsp;
-<spring:message code="welcome.dias.disponibles" /> <spam style="font-weight: normal;">${diasPersonales.dias_totales-diasPersonales.dias_usados}</spam>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
-Reservar</button></p>
+<spring:message code="welcome.dias.disponibles" /> <spam style="font-weight: normal;">${diasPersonales.dias_totales-diasPersonales.dias_usados}</spam>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<jstl:choose>
+	<jstl:when test="${diasPersonales.dias_totales-diasPersonales.dias_usados=='0'}">
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" disabled>
+		Reservar</button>
+	</jstl:when>
+	<jstl:otherwise>
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
+		Reservar</button>
+	</jstl:otherwise>
+</jstl:choose>
+
+</p>
 </div>
 <div id="reservas" style="float: right;">
 <display:table name="reservas" id="row" requestURI="/" pagesize="6" class="displaytag">
@@ -63,14 +85,20 @@ Reservar</button></p>
         </button>
       </div>
       <div class="modal-body">
-        <form>
-        	&nbsp;&nbsp;&nbsp;&nbsp;Día de inicio: &nbsp;&nbsp;&nbsp;&nbsp;<input type="date">
-        	<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;Dia final:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="date">
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Añadir</button>
+        <form:form action="reservas/create.do" method="post" modelAttribute="reserva" role="form">
+        	<form:hidden path="id" />
+			<form:hidden path="version" />
+			<form:hidden path="estado"  value="Solicitadas"/>
+			<form:hidden path="tipo" value="Vacaciones"/>
+			<form:hidden path="empleado" />
+			
+        	&nbsp;&nbsp;&nbsp;&nbsp;Día de inicio: &nbsp;&nbsp;&nbsp;&nbsp;<form:input path="fecha" type="date" required="true"/>
+        	<br/>
+        	<div class="modal-footer">
+        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        		<button type="submit" name="save" class="btn btn-primary">Añadir</button>
+      		</div>
+        </form:form>
       </div>
     </div>
   </div>
@@ -87,13 +115,20 @@ Reservar</button></p>
         </button>
       </div>
       <div class="modal-body">
-         <form>
-        	&nbsp;&nbsp;&nbsp;&nbsp;Día: &nbsp;&nbsp;&nbsp;&nbsp;<input type="date">
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Añadir</button>
+        <form:form action="reservas/create.do" method="post" modelAttribute="reserva" role="form">
+        	<form:hidden path="id" />
+			<form:hidden path="version" />
+			<form:hidden path="estado"  value="Solicitadas"/>
+			<form:hidden path="tipo" value="Dias Personales"/>
+			<form:hidden path="empleado" />
+			
+        	&nbsp;&nbsp;&nbsp;&nbsp;Día de inicio: &nbsp;&nbsp;&nbsp;&nbsp;<form:input path="fecha" type="date" required="true"/>
+        	<br/>
+        	<div class="modal-footer">
+        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        		<button type="submit" name="save" class="btn btn-primary">Añadir</button>
+      		</div>
+        </form:form>
       </div>
     </div>
   </div>

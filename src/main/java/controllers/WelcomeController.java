@@ -28,6 +28,7 @@ import domain.Vacaciones;
 import services.ActorService;
 import services.DiasPersonalesService;
 import services.EmpleadoService;
+import services.ReservasService;
 import services.VacacionesService;
 
 @Controller
@@ -48,6 +49,9 @@ public class WelcomeController extends AbstractController {
 	@Autowired
 	EmpleadoService empleadoService;
 	
+	@Autowired
+	ReservasService reservasService;
+	
 	// Constructors -----------------------------------------------------------
 	
 	public WelcomeController() {
@@ -65,6 +69,7 @@ public class WelcomeController extends AbstractController {
 		Vacaciones vacaciones;
 		DiasPersonales diasPersonales;
 		List<Reservas> reservas;
+		Reservas reserva;
 		
 		formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		moment = formatter.format(new Date());
@@ -79,9 +84,11 @@ public class WelcomeController extends AbstractController {
 			vacaciones = empleado.getVacaciones();
 			diasPersonales = empleado.getDiasPersonales();
 			reservas = new ArrayList<Reservas>(empleado.getReservas());
+			reserva = reservasService.create();
 			
 			result.addObject("vacaciones", vacaciones);
 			result.addObject("reservas", reservas);
+			result.addObject("reserva", reserva);
 			result.addObject("empleado", empleado);
 			result.addObject("diasPersonales", diasPersonales);
 		}

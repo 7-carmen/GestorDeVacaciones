@@ -59,7 +59,7 @@ public class Empleado extends Actor {
 	private Collection<Reservas> reservas;
 	
 	@Valid
-	@OneToMany
+	@OneToMany(mappedBy="empleado")
 	public Collection<Reservas> getReservas() {
 		return reservas;
 	}

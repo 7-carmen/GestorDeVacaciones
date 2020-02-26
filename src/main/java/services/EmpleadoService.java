@@ -10,6 +10,8 @@ import org.springframework.util.Assert;
 
 import domain.Empleado;
 import repositories.EmpleadoRepository;
+import security.LoginService;
+import security.UserAccount;
 
 @Service
 @Transactional
@@ -69,6 +71,20 @@ public class EmpleadoService {
 		}
 		
 		// Other business methods -------------------------------------------------7
-
+		
+		/**
+		 * Devuelve el user que está realizando la operación
+		 */
+		public Empleado findByPrincipal(){
+			Empleado result;
+			UserAccount userAccount;
+			
+			userAccount = LoginService.getPrincipal();
+			Assert.notNull(userAccount);
+			result = empleadoRepository.findByUserAccountId(userAccount.getId());
+			Assert.notNull(result);
+			
+			return result;
+		}
 	
 }

@@ -72,48 +72,6 @@
 		<property name="dias_usados" value="0" />
 	</bean>
 	
-	<bean id="reservas1" class="domain.Reservas">
-		<property name="tipo" value="Vacaciones" />
-		<property name="fecha" value="25/02/2020" />
-		<property name="estado" value="Concedidas" />
-	</bean>
-	
-	<bean id="reservas2" class="domain.Reservas">
-		<property name="tipo" value="Vacaciones" />
-		<property name="fecha" value="26/02/2020" />
-		<property name="estado" value="Concedidas" />
-	</bean>
-	
-	<bean id="reservas3" class="domain.Reservas">
-		<property name="tipo" value="Vacaciones" />
-		<property name="fecha" value="27/02/2020" />
-		<property name="estado" value="Concedidas" />
-	</bean>
-	
-	<bean id="reservas4" class="domain.Reservas">
-		<property name="tipo" value="Vacaciones" />
-		<property name="fecha" value="28/02/2020" />
-		<property name="estado" value="Concedidas" />
-	</bean>
-	
-	<bean id="reservas5" class="domain.Reservas">
-		<property name="tipo" value="Vacaciones" />
-		<property name="fecha" value="29/02/2020" />
-		<property name="estado" value="Concedidas" />
-	</bean>
-	
-	<bean id="reservas6" class="domain.Reservas">
-		<property name="tipo" value="Vacaciones" />
-		<property name="fecha" value="1/03/2020" />
-		<property name="estado" value="Concedidas" />
-	</bean>
-	
-	<bean id="reservas7" class="domain.Reservas">
-		<property name="tipo" value="Vacaciones" />
-		<property name="fecha" value="2/03/2020" />
-		<property name="estado" value="Concedidas" />
-	</bean>
-	
 	<bean id="empleado1" class="domain.Empleado">
 		<property name="nombre" value="Carmen" />
 		<property name="apellidos" value="Soriano" />
@@ -125,17 +83,55 @@
 		<property name="departamento" ref="departamento1" />
 		<property name="vacaciones" ref="vacaciones1" />
 		<property name="diasPersonales" ref="diasPersonales1" />
-		<property name="reservas">
-			<list>
-				<ref bean="reservas1"/>
-				<ref bean="reservas2"/>
-				<ref bean="reservas3"/>
-				<ref bean="reservas4"/>
-				<ref bean="reservas5"/>
-				<ref bean="reservas6"/>
-				<ref bean="reservas7"/>
-			</list>
-		</property>
+	</bean>
+	
+	<bean id="reservas1" class="domain.Reservas">
+		<property name="tipo" value="Vacaciones" />
+		<property name="fecha" value="25/02/2020" />
+		<property name="estado" value="Concedidas" />
+		<property name="empleado" ref="empleado1" />
+	</bean>
+	
+	<bean id="reservas2" class="domain.Reservas">
+		<property name="tipo" value="Vacaciones" />
+		<property name="fecha" value="26/02/2020" />
+		<property name="estado" value="Concedidas" />
+		<property name="empleado" ref="empleado1" />
+	</bean>
+	
+	<bean id="reservas3" class="domain.Reservas">
+		<property name="tipo" value="Vacaciones" />
+		<property name="fecha" value="27/02/2020" />
+		<property name="estado" value="Concedidas" />
+		<property name="empleado" ref="empleado1" />
+	</bean>
+	
+	<bean id="reservas4" class="domain.Reservas">
+		<property name="tipo" value="Vacaciones" />
+		<property name="fecha" value="28/02/2020" />
+		<property name="estado" value="Concedidas" />
+		<property name="empleado" ref="empleado1" />
+	</bean>
+	
+	<bean id="reservas5" class="domain.Reservas">
+		<property name="tipo" value="Vacaciones" />
+		<property name="fecha" value="29/02/2020" />
+		<property name="estado" value="Concedidas" />
+		<property name="empleado" ref="empleado1" />
+	</bean>
+	
+	<bean id="reservas6" class="domain.Reservas">
+		<property name="tipo" value="Vacaciones" />
+		<property name="fecha" value="1/03/2020" />
+		<property name="estado" value="Concedidas" />
+		<property name="empleado" ref="empleado1" />
+	</bean>
+	
+	<bean id="reservas7" class="domain.Reservas">
+		<property name="tipo" value="Vacaciones" />
+		<property name="fecha" value="2/03/2020" />
+		<property name="estado" value="Concedidas" />
+		<property name="empleado" ref="empleado1" />
 	</bean>
 	
 	<!-- Other domain beans come here -->	
