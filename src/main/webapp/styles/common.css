@@ -29,18 +29,21 @@ img{
 }
 .cabecera{
 	height: 100px;
-    background-color: #CCFFFF;
+    background-color: #90DDF0;
   	color: black;
   	padding: 15px;
  
 }
 
 #footer {
-    height: 60px;
-    background-color: #CCFFFF;
-  	color: black;
-  	padding: 15px;
-  	text-align: center;
+	height: 60px;
+    background-color: #90DDF0;
+    color: black;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    position: unset;
+    margin-top: 363px
 }
 
 .cabecera li{
@@ -48,13 +51,57 @@ img{
 }
 
 #login{
-	margin: 50px 100px 200px 500px;
-	border-color: 1px solid #CCFFF;
-	width: 100px;
-    height: 100px
+	height: 307px;
+    width: 50%;
+    position: absolute;
+    margin-left: 500px;
+    margin-top: 50px;
 }
 
 h1{
 	text-align: center;
-	margin-top: 10px important!;
+	padding-top: 30px;
+}
+
+#datos{
+	height: 307px;
+    width: 50%;
+    position: absolute;
+    margin-left: 50px;
+    margin-top: 25px;
+}
+
+#reservas{
+	height: 100px; 
+	width: 50%; 
+	margin-top: 25px;
+}
+
+.titulos{
+	margin-left: 134px;
+    margin-top: 13px;
+}
+
+.bntcabecera{
+	margin-top: -57px;	
+}
+
+button{
+	background-color: #20c997 !important;
+}
+
+button#cerrar{
+	background-color: #FFFF !important;
+}
+
+thead tr{
+	background-color: #20c997 !important;
+}
+
+tr.even{
+	background-color: #CCFFFF !important;
+}
+
+tr.odd{
+	background-color: #fff !important;
 }

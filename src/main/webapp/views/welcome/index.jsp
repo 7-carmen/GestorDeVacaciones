@@ -25,12 +25,23 @@
 </security:authorize>
 
 <security:authorize access="hasRole('EMPLEADO')">
-
-<p><spring:message code="welcome.dias.totales" /> ${vacaciones.dias_totales}</p>
-<p><spring:message code="welcome.dias.usados" /> ${vacaciones.dias_usados}</p>
-<p><spring:message code="welcome.dias.disponibles" /> ${vacaciones.dias_totales-vacaciones.dias_usados}</p>
-
-<display:table name="reservas" id="row" requestURI="/" pagesize="2" class="displaytag">
+<div id="datos" style="float: left;">
+<p style="font-weight: bold;"><spring:message code="welcome.dias.nombre" /> <spam style="font-weight: normal;">${empleado.nombre}</spam>&nbsp;&nbsp;&nbsp;<spring:message code="welcome.dias.apellido" /> <spam style="font-weight: normal;">${empleado.apellidos}</spam></p>
+<p style="font-weight: bold;"><spring:message code="welcome.dias.direccion" /> <spam style="font-weight: normal;">${empleado.direccion}</spam></p>
+<p style="font-weight: bold;"><spring:message code="welcome.dias.telefono" /> <spam style="font-weight: normal;">${empleado.telefono}</spam></p>
+<p style="font-weight: bold;"><spring:message code="welcome.dias.correo" /> <spam style="font-weight: normal;">${empleado.correo}</spam></p>
+<p style="font-weight: bold;"><spring:message code="welcome.dias.departamento" /> <spam style="font-weight: normal;">${empleado.departamento.nombre}</spam></p>
+<p style="font-weight: bold;"><spring:message code="welcome.dias.totales" /> <spam style="font-weight: normal;">${vacaciones.dias_totales}</spam>&nbsp;&nbsp;&nbsp;
+<spring:message code="welcome.dias.usados" /> <spam style="font-weight: normal;">${vacaciones.dias_usados}</spam>&nbsp;&nbsp;&nbsp;
+<spring:message code="welcome.dias.disponibles" /> <spam style="font-weight: normal;">${vacaciones.dias_totales-vacaciones.dias_usados}</spam>&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+Reservar</button></p>
+<p style="font-weight: bold;"><spring:message code="welcome.dias.totales" /> <spam style="font-weight: normal;">${diasPersonales.dias_totales}</spam>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<spring:message code="welcome.dias.usados" /> <spam style="font-weight: normal;">${diasPersonales.dias_usados}</spam>&nbsp;&nbsp;&nbsp;
+<spring:message code="welcome.dias.disponibles" /> <spam style="font-weight: normal;">${diasPersonales.dias_totales-diasPersonales.dias_usados}</spam>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
+Reservar</button></p>
+</div>
+<div id="reservas" style="float: right;">
+<display:table name="reservas" id="row" requestURI="/" pagesize="6" class="displaytag">
 	<spring:message code="welcome.reservas.tipo" var="TipoHeader" />
 	<display:column property="tipo"  title="${TipoHeader}" sortable="true" />
 	
@@ -40,5 +51,51 @@
 	<spring:message code="welcome.reservas.estado" var="EstadoHeader" />
 	<display:column property="estado"  title="${EstadoHeader}" sortable="true" />
 </display:table>
+</div>
+<!-- VENTANA MODAL PARA AÑADIR VACACIONES -->
+<div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Añadir Vacaciones:</h5>
+        <button type="button" id="cerrar" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+        	&nbsp;&nbsp;&nbsp;&nbsp;Día de inicio: &nbsp;&nbsp;&nbsp;&nbsp;<input type="date">
+        	<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;Dia final:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="date">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Añadir</button>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- VENTANA MODAL PARA AÑADIR DIAS PROPIOS -->
+<div class="modal" tabindex="-1" role="dialog" id="exampleModal1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Añadir Dias Propios:</h5>
+        <button type="button" id="cerrar" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <form>
+        	&nbsp;&nbsp;&nbsp;&nbsp;Día: &nbsp;&nbsp;&nbsp;&nbsp;<input type="date">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Añadir</button>
+      </div>
+    </div>
+  </div>
+</div>
 </security:authorize>

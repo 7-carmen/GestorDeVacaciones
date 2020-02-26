@@ -15,12 +15,16 @@
 
 <div class="cabecera">
 <div style="float: left;">
-	<img src="images/logo.png" alt="Gestor de Vacaciones 3.0" />
+	<a href="security/login.do"><img src="images/logo.png" alt="Gestor de Vacaciones 3.0"/></a>
 <br/>
 <!-- HREF para escoger el lenguaje -->
 <a id="lenguaje" href="?language=en">en</a> | <a href="?language=es">es</a>
 </div>
-<div style="float: right;"> 
+	<div class="titulos">
+	<p style="font-weight: bold; font-size:30px; line-height:10px;">CeliaTOUR S.A.</p>
+	<p style="line-height:10px; margin-left: 5px;">Gestor de Vacaciones 3.0</p>
+	</div>
+<div class="bntcabecera" style="float: right;"> 
 <!-- Menu del LOGIN -->
 		<security:authorize access="isAnonymous()">
 		<ul>
