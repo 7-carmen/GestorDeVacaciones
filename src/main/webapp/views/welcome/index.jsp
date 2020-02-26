@@ -24,7 +24,7 @@
 
 </security:authorize>
 
-<security:authorize access="hasRole('EMPLEADO')">
+<security:authorize access="hasAnyRole('EMPLEADO', 'JEFEDEPARTAMENTO')">
 <div id="datos" style="float: left;">
 <p style="font-weight: bold;"><spring:message code="welcome.dias.nombre" /> <spam style="font-weight: normal;">${empleado.nombre}</spam>&nbsp;&nbsp;&nbsp;<spring:message code="welcome.dias.apellido" /> <spam style="font-weight: normal;">${empleado.apellidos}</spam></p>
 <p style="font-weight: bold;"><spring:message code="welcome.dias.direccion" /> <spam style="font-weight: normal;">${empleado.direccion}</spam></p>
