@@ -16,8 +16,8 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<div id="reservas" style="float: right;">
-<display:table name="reservas" id="row" requestURI="/jefedepartamento/reservas/list.do" pagesize="6" class="displaytag">
+<div id="listaReservas">
+<display:table name="reservas" id="row" requestURI="/jefedepartamento/reservas/list.do" pagesize="8" class="displaytag">
 	
 	<spring:message code="welcome.reservas.tipo" var="nombreEmpleadoHeader" />
 	<display:column value="${row.empleado.nombre} ${row.empleado.apellidos}"  title="${nombreEmpleadoHeader}" sortable="true" />
@@ -33,12 +33,12 @@
 	
 	<spring:message code="welcome.reservas.estado" var="EstadoHeader" />
 	<display:column  title="${EstadoHeader}" sortable="false">
-		<a href="/jefedepartamento/reservas/edit.do?idReserva=${row.id}&accion='APROBAR'">Visit W3Schools</a>
+		<a href="/jefedepartamento/reservas/edit.do?idReserva=${row.id}&accion='APROBAR'"><img id="<aceptar" src="images/aceptar.png" alt="Gestor de Vacaciones 3.0"/></a>
 	</display:column>
 	
 	<spring:message code="welcome.reservas.estado" var="EstadoHeader" />
 	<display:column  title="${EstadoHeader}" sortable="false" >
-		<a href="/jefedepartamento/reservas/edit.do?idReserva=${row.id}&accion='DENEGAR'">Visit W3Schools</a>
+		<a href="/jefedepartamento/reservas/edit.do?idReserva=${row.id}&accion='DENEGAR'"><img id="detener" src="images/detener.png" alt="Gestor de Vacaciones 3.0"/></a>
 	</display:column>
 </display:table>
 </div>

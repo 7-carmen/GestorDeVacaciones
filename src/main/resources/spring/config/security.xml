@@ -44,7 +44,7 @@
 
 		<security:intercept-url pattern="/jefedepartamento/**" access="hasRole('JEFEDEPARTAMENTO')" /> 
 
-		<security:intercept-url pattern="/reservas/create.do" access="hasRole('EMPLEADO')" /> 
+		<security:intercept-url pattern="/reservas/create.do" access="isAuthenticated()" /> 
 		<security:intercept-url pattern="/customer/action-2.do" access="hasRole('EMPLEADO')" /> 
 
 		<security:intercept-url pattern="/views/master-page/layout.jsp" access="isAuthenticated()" /> 

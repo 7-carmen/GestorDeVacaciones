@@ -73,6 +73,12 @@
 	<spring:message code="welcome.reservas.estado" var="EstadoHeader" />
 	<display:column property="estado"  title="${EstadoHeader}" sortable="true" />
 </display:table>
+<security:authorize access="hasRole('JEFEDEPARTAMENTO')">
+<div id="adminbtn">
+	<button class="btn btn-primary">Añadir Empleado</button>
+	<button class="btn btn-primary"  onclick="window.location.href='jefedepartamento/reservas/list.do'">Administrar reservas</button>
+</div>
+</security:authorize>
 </div>
 <!-- VENTANA MODAL PARA AÑADIR VACACIONES -->
 <div class="modal" tabindex="-1" role="dialog" id="exampleModal">

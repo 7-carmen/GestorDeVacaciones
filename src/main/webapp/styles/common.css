@@ -81,6 +81,12 @@ h1{
 	margin-top: 25px;
 }
 
+#listaReservas{
+	margin-left: 205px;
+	height: 50%;
+	margin-bottom: -338px;
+}
+
 .titulos{
 	margin-left: 134px;
     margin-top: 13px;
@@ -108,4 +114,15 @@ tr.even{
 
 tr.odd{
 	background-color: #fff !important;
+}
+
+#adminbtn{
+	margin-left:80px;
+}
+
+#listaReservas img {
+	width: 25px;
+    height: 25px !important;
+    margin-top: 0px;
+    margin-left: 14px;
 }
