@@ -31,14 +31,18 @@
 	<spring:message code="welcome.reservas.estado" var="EstadoHeader" />
 	<display:column property="estado"  title="${EstadoHeader}" sortable="true" />
 	
-	<spring:message code="welcome.reservas.estado" var="EstadoHeader" />
-	<display:column  title="${EstadoHeader}" sortable="false">
-		<a href="/jefedepartamento/reservas/edit.do?idReserva=${row.id}&accion='APROBAR'"><img id="<aceptar" src="images/aceptar.png" alt="Gestor de Vacaciones 3.0"/></a>
+	<spring:message code="reservas.conceder" var="ConcederHeader" />
+	<display:column  title="${ConcederHeader}" sortable="false">
+		<jstl:if test="${row.estado=='Solicitadas'}">
+			<a href="jefedepartamento/reservas/edit.do?idReserva=${row.id}&accion=CONCEDER"><img id="<aceptar" src="images/aceptar.png" alt="Gestor de Vacaciones 3.0"/></a>
+		</jstl:if>
 	</display:column>
 	
-	<spring:message code="welcome.reservas.estado" var="EstadoHeader" />
-	<display:column  title="${EstadoHeader}" sortable="false" >
-		<a href="/jefedepartamento/reservas/edit.do?idReserva=${row.id}&accion='DENEGAR'"><img id="detener" src="images/detener.png" alt="Gestor de Vacaciones 3.0"/></a>
+	<spring:message code="reservas.denegar" var="DenegarHeader" />
+	<display:column  title="${DenegarHeader}" sortable="false" >
+		<jstl:if test="${row.estado=='Solicitadas'}">
+			<a href="jefedepartamento/reservas/edit.do?idReserva=${row.id}&accion=DENEGAR"><img id="detener" src="images/detener.png" alt="Gestor de Vacaciones 3.0"/></a>
+		</jstl:if>
 	</display:column>
 </display:table>
 </div>

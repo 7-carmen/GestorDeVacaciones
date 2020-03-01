@@ -10,9 +10,7 @@
 
 package controllers.jefedepartamento;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +57,7 @@ public class ReservasJefeDepartamentoController extends AbstractController {
 		super();
 	}
 		
-	// Index ------------------------------------------------------------------		
+	// List ------------------------------------------------------------------		
 
 	@RequestMapping(value = "/list")
 	public ModelAndView list() {
@@ -78,5 +76,41 @@ public class ReservasJefeDepartamentoController extends AbstractController {
 		result.addObject("reservas", reservas);
 
 		return result;
+	}
+	
+	// Edit ------------------------------------------------------------------		
+
+	@RequestMapping(value = "/edit")
+	public ModelAndView edit(@RequestParam int idReserva, @RequestParam String accion) {
+		Empleado empleado;
+		Reservas reserva;
+		Vacaciones vacaciones;
+		DiasPersonales diasPersonales;
+		
+		reserva = reservasService.findOne(idReserva);
+		empleado = reserva.getEmpleado();
+		
+		if(accion.equals("CONCEDER")) {
+			reserva.setEstado("Concedidas");
+			
+			reservasService.save(reserva);
+			
+		} else if (accion.equals("DENEGAR")){
+			reserva.setEstado("Denegadas");
+			
+			if(reserva.getTipo().equals("Vacaciones")) {
+				vacaciones = empleado.getVacaciones();
+				vacaciones.setDias_usados(vacaciones.getDias_usados()-1);
+				vacacionesService.save(vacaciones);
+			} else {
+				diasPersonales = empleado.getDiasPersonales();
+				diasPersonales.setDias_usados(diasPersonales.getDias_usados()-1);
+				diasPersonalesService.save(diasPersonales);
+			}
+			
+			reservasService.save(reserva);
+		}
+		
+		return new ModelAndView("redirect:/jefedepartamento/reservas/list.do");
 	}
 }

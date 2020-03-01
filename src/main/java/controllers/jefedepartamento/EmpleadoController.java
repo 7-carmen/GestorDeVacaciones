@@ -8,7 +8,7 @@
  * 
  */
 
-package controllers.Empleado;
+package controllers.jefedepartamento;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import controllers.AbstractController;
 
 @Controller
-@RequestMapping("/empleado")
+@RequestMapping("/jefedepartamento/empleado")
 public class EmpleadoController extends AbstractController {
 
 	// Constructors -----------------------------------------------------------

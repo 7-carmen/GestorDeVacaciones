@@ -21,12 +21,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import controllers.AbstractController;
 import domain.DiasPersonales;
-import domain.Empleado;
 import domain.Reservas;
 import domain.Vacaciones;
-import services.ActorService;
 import services.DiasPersonalesService;
-import services.EmpleadoService;
 import services.ReservasService;
 import services.VacacionesService;
 
@@ -56,7 +53,6 @@ public class ReservasController extends AbstractController {
 	@RequestMapping(value = "/create", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@Valid Reservas reserva, BindingResult binding) {
 		ModelAndView result;
-		String messageError;
 		String fecha;
 		Vacaciones vacaciones;
 		DiasPersonales diasPersonales;
@@ -85,12 +81,6 @@ public class ReservasController extends AbstractController {
 				result = new ModelAndView("redirect:/");
 			} catch (Throwable oops) {
 				System.out.println(oops);
-				/*log.error(oops.getMessage());
-				messageError = "alert.commit.error";
-				if(oops.getMessage().contains("message.error")){
-					messageError=oops.getMessage();
-				}
-				result = createEditModelAndView(reserva, messageError);*/
 				result = null;
 			}
 		}
