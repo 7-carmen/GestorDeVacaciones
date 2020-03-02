@@ -15,12 +15,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
-<script>
-	$("#btnvolver").click(function(){
-		window.history.back();
-	});
-</script>
-<img src="images/espalda.png" id="btnvolver">
+<a><img src="images/espalda.png" id="btnvolver" onclick="window.history.back();"></a>
 <div id="listaReservas">
 <display:table name="reservas" id="row" requestURI="/jefedepartamento/reservas/list.do" pagesize="8" class="displaytag">
 	

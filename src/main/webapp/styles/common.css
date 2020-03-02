@@ -132,4 +132,5 @@ tr.odd{
     margin-top: -76px;
     height: 25px !important;
     width: 25px;
+    cursor: pointer;
 }
