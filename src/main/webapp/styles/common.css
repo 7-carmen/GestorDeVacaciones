@@ -126,3 +126,10 @@ tr.odd{
     margin-top: 0px;
     margin-left: 14px;
 }
+
+#btnvolver{
+	margin-left: 12px;
+    margin-top: -76px;
+    height: 25px !important;
+    width: 25px;
+}
