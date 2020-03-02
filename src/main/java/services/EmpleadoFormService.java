@@ -1,7 +1,9 @@
 package services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
@@ -10,7 +12,7 @@ import domain.DiasPersonales;
 import domain.Empleado;
 import domain.EmpleadoForm;
 import domain.Vacaciones;
-import security.LoginService;
+import security.Authority;
 import security.UserAccount;
 import security.UserAccountService;
 
@@ -21,13 +23,7 @@ public class EmpleadoFormService {
 	// Supporting services ----------------------------------------------------
 
 	@Autowired
-	private LoginService loginService;
-
-	@Autowired
 	private UserAccountService userAccountService;
-
-	@Autowired
-	private EmpleadoService empleadoService;
 
 	@Autowired
 	private VacacionesService vacacionesService;
@@ -37,6 +33,10 @@ public class EmpleadoFormService {
 	
 	@Autowired
 	private DepartamentoService departamentoService;
+	
+	@Autowired
+	private EmpleadoService empleadoService;
+
 
 	// Constructors -----------------------------------------------------------
 
@@ -58,14 +58,14 @@ public class EmpleadoFormService {
 		Boolean usernameExist = true;
 		Empleado empleado;
 		UserAccount userAccount;
+		List<Authority> authorities;
+		Authority authority;
 		Vacaciones vacaciones;
 		DiasPersonales diasPersonales;
 
 		// Chequear nombre de usuario único
-
-		try {
-			loginService.loadUserByUsername(empleadoForm.getUsername());
-		} catch (UsernameNotFoundException u) {
+		
+		if(userAccountService.findByUserNameWithoutAsserts(empleadoForm.getUsername())==null) {
 			usernameExist = false;
 		}
 
@@ -75,10 +75,17 @@ public class EmpleadoFormService {
 
 			userAccount = new UserAccount();
 			userAccount.setUsername(empleadoForm.getUsername());
-			userAccount.setUsername(empleadoForm.getPassword());
-
+			userAccount.setPassword(empleadoForm.getPassword());
+			
+			authorities = new ArrayList<Authority>();
+			authority = new Authority();
+			authority.setAuthority("EMPLEADO");
+			authorities.add(authority);
+			
+			userAccount.setAuthorities(authorities);
+			
 			userAccount = userAccountService.encodePassword(userAccount);
-			userAccountService.save(userAccount);
+			userAccount = userAccountService.save(userAccount);
 
 			// Vacaciones
 			
@@ -86,7 +93,7 @@ public class EmpleadoFormService {
 			vacaciones.setDias_totales(empleadoForm.getVacaciones());
 			vacaciones.setDias_usados(0);
 			
-			vacacionesService.save(vacaciones);
+			vacaciones = vacacionesService.save(vacaciones);
 			
 			//Dias Personales
 			
@@ -94,7 +101,7 @@ public class EmpleadoFormService {
 			diasPersonales.setDias_totales(empleadoForm.getDiasPersonales());
 			diasPersonales.setDias_usados(0);
 			
-			diasPersonalesService.save(diasPersonales);
+			diasPersonales = diasPersonalesService.save(diasPersonales);
 			
 			//Emleado
 			
@@ -116,7 +123,8 @@ public class EmpleadoFormService {
 		} else {
 			empleado = null;
 		}
-		return null;
+		
+		return empleado;
 
 	}
 }

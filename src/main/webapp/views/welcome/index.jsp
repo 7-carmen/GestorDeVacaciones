@@ -18,7 +18,7 @@
 
 <security:authorize access="isAnonymous()">
 
-<p><spring:message code="welcome.greeting.prefix" /> ${name}<spring:message code="welcome.greeting.suffix" /></p>
+<p><spring:message code="welcome.greeting" /></p>
 
 <p><spring:message code="welcome.greeting.current.time" /> ${moment}</p> 
 
@@ -26,14 +26,14 @@
 
 <security:authorize access="hasAnyRole('EMPLEADO', 'JEFEDEPARTAMENTO')">
 <div id="datos" style="float: left;">
-<p style="font-weight: bold;"><spring:message code="welcome.dias.nombre" /> <spam style="font-weight: normal;">${empleado.nombre}</spam>&nbsp;&nbsp;&nbsp;<spring:message code="welcome.dias.apellido" /> <spam style="font-weight: normal;">${empleado.apellidos}</spam></p>
-<p style="font-weight: bold;"><spring:message code="welcome.dias.direccion" /> <spam style="font-weight: normal;">${empleado.direccion}</spam></p>
-<p style="font-weight: bold;"><spring:message code="welcome.dias.telefono" /> <spam style="font-weight: normal;">${empleado.telefono}</spam></p>
-<p style="font-weight: bold;"><spring:message code="welcome.dias.correo" /> <spam style="font-weight: normal;">${empleado.correo}</spam></p>
-<p style="font-weight: bold;"><spring:message code="welcome.dias.departamento" /> <spam style="font-weight: normal;">${empleado.departamento.nombre}</spam></p>
-<p style="font-weight: bold;"><spring:message code="welcome.dias.totales" /> <spam style="font-weight: normal;">${vacaciones.dias_totales}</spam>&nbsp;&nbsp;&nbsp;
-<spring:message code="welcome.dias.usados" /> <spam style="font-weight: normal;">${vacaciones.dias_usados}</spam>&nbsp;&nbsp;&nbsp;
-<spring:message code="welcome.dias.disponibles" /> <spam style="font-weight: normal;">${vacaciones.dias_totales-vacaciones.dias_usados}</spam>&nbsp;&nbsp;&nbsp;
+<p style="font-weight: bold;"><spring:message code="welcome.dias.nombre" /> <span style="font-weight: normal;">${empleado.nombre}</span>&nbsp;&nbsp;&nbsp;<spring:message code="welcome.dias.apellido" /> <span style="font-weight: normal;">${empleado.apellidos}</span></p>
+<p style="font-weight: bold;"><spring:message code="welcome.dias.direccion" /> <span style="font-weight: normal;">${empleado.direccion}</span></p>
+<p style="font-weight: bold;"><spring:message code="welcome.dias.telefono" /> <span style="font-weight: normal;">${empleado.telefono}</span></p>
+<p style="font-weight: bold;"><spring:message code="welcome.dias.correo" /> <span style="font-weight: normal;">${empleado.correo}</span></p>
+<p style="font-weight: bold;"><spring:message code="welcome.dias.departamento" /> <span style="font-weight: normal;">${empleado.departamento.nombre}</span></p>
+<p style="font-weight: bold;"><spring:message code="welcome.dias.totales" /> <span style="font-weight: normal;">${vacaciones.dias_totales}</span>&nbsp;&nbsp;&nbsp;
+<spring:message code="welcome.dias.usados" /> <span style="font-weight: normal;">${vacaciones.dias_usados}</span>&nbsp;&nbsp;&nbsp;
+<spring:message code="welcome.dias.disponibles" /> <span style="font-weight: normal;">${vacaciones.dias_totales-vacaciones.dias_usados}</span>&nbsp;&nbsp;&nbsp;
 <jstl:choose>
 	<jstl:when test="${vacaciones.dias_totales-vacaciones.dias_usados=='0'}">
 		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" disabled>
@@ -45,9 +45,9 @@
 	</jstl:otherwise>
 </jstl:choose>
 </p>
-<p style="font-weight: bold;"><spring:message code="welcome.dias.totales" /> <spam style="font-weight: normal;">${diasPersonales.dias_totales}</spam>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<spring:message code="welcome.dias.usados" /> <spam style="font-weight: normal;">${diasPersonales.dias_usados}</spam>&nbsp;&nbsp;&nbsp;
-<spring:message code="welcome.dias.disponibles" /> <spam style="font-weight: normal;">${diasPersonales.dias_totales-diasPersonales.dias_usados}</spam>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<p style="font-weight: bold;"><spring:message code="welcome.dias.totales" /> <span style="font-weight: normal;">${diasPersonales.dias_totales}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<spring:message code="welcome.dias.usados" /> <span style="font-weight: normal;">${diasPersonales.dias_usados}</span>&nbsp;&nbsp;&nbsp;
+<spring:message code="welcome.dias.disponibles" /> <span style="font-weight: normal;">${diasPersonales.dias_totales-diasPersonales.dias_usados}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 <jstl:choose>
 	<jstl:when test="${diasPersonales.dias_totales-diasPersonales.dias_usados=='0'}">
@@ -75,7 +75,7 @@
 </display:table>
 <security:authorize access="hasRole('JEFEDEPARTAMENTO')">
 <div id="adminbtn">
-	<button class="btn btn-primary">Añadir Empleado</button>
+	<button class="btn btn-primary" onclick="window.location.href='jefedepartamento/empleado/create.do'">Añadir Empleado</button>
 	<button class="btn btn-primary"  onclick="window.location.href='jefedepartamento/reservas/list.do'">Administrar reservas</button>
 </div>
 </security:authorize>

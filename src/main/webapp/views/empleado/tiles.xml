@@ -16,9 +16,14 @@
        
 <tiles-definitions>
 
-	<definition name="empleado/index" extends="master.page">	
-		<put-attribute name="title" value="Welcom!" />
-		<put-attribute name="body" value="/views/empleado/index.jsp" />
+	<definition name="empleado/create" extends="master.page">	
+		<put-attribute name="title" value="User's Creator" />
+		<put-attribute name="body" value="/views/empleado/create.jsp" />
 	</definition>
 	
+	<definition name="empleado/verification" extends="master.page">	
+		<put-attribute name="title" value="Verification" />
+		<put-attribute name="body" value="/views/empleado/verification.jsp" />
+	</definition>
+		
 </tiles-definitions>
