@@ -44,7 +44,17 @@
 	
 	<bean id="departamento1" class="domain.Departamento">
 		<property name="nombre" value="Informática" />
-		<property name="descripcion" value="Contiene a los empleados del área Informática" />
+		<property name="descripcion" value="Contiene a los empleados del área de Informática" />
+	</bean>
+	
+	<bean id="departamento2" class="domain.Departamento">
+		<property name="nombre" value="Recursos Humanos" />
+		<property name="descripcion" value="Contiene a los empleados del área de Recursos Humanos" />
+	</bean>
+	
+	<bean id="departamento3" class="domain.Departamento">
+		<property name="nombre" value="Sistemas" />
+		<property name="descripcion" value="Contiene a los empleados del área de Sistemas" />
 	</bean>
 	
 	<bean id="vacaciones1" class="domain.Vacaciones">
