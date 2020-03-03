@@ -18,10 +18,13 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<div class="container">
+<div class="container" id="respuestaTitulo">
 	<spring:message code="${title}" />
 	<br/><br/>
+</div>
+<div class="container" id="respuesta">
 	<button type="submit" class="btn  btn-primary" onclick="window.location.href = '';">
 		<spring:message code="empleado.aceptar" />
 	</button>
 </div>
+<div id="quitarpie"></div>

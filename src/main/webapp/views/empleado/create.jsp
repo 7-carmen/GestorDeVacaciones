@@ -17,17 +17,15 @@
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
-
-<div class="container">
-	<div class="row formulario-sm">
+<img src="images/espalda.png" id="btnvolver" onclick="window.history.back();">
 		<form:form action="jefedepartamento/empleado/create.do" modelAttribute="empleadoForm"
 			method="post" class="form-horizontal" role="form">
-
+<div style="float: left; margin-left: 200px; margin-top: 20px;">
 				<form:label path="anio_entrada"
 					for="anio_entrada">
 					<spring:message code="empleado.anio_entrada" />
 				</form:label><br/>
-				<form:input path="anio_entrada" id="anio_entrada"
+				<form:input type="number" path="anio_entrada" id="anio_entrada"
 					required="required" />
 				<form:errors class="error" path="anio_entrada" />
 				<br/><br/>
@@ -51,10 +49,12 @@
 					for="correo">
 					<spring:message code="empleado.correo" />
 				</form:label><br/>
-				<form:input path="correo" id="correo"
+				<form:input type="email" path="correo" id="correo"
 					required="required" />
 				<form:errors class="error" path="correo" />
 				<br/><br/>
+</div>
+<div style="float: left; margin-left: 200px; margin-top: 20px;">
 				<form:label path="direccion"
 					for="direccion">
 					<spring:message code="empleado.direccion" />
@@ -67,7 +67,7 @@
 					for="telefono">
 					<spring:message code="empleado.telefono" />
 				</form:label><br/>
-				<form:input path="telefono" id="telefono"
+				<form:input type="number" path="telefono" id="telefono"
 					required="required" />
 				<form:errors class="error" path="telefono" />
 				<br/><br/>
@@ -83,10 +83,12 @@
 					for="password">
 					<spring:message code="empleado.password" />
 				</form:label><br/>
-				<form:input path="password" id="password"
+				<form:input type="password" path="password" id="password"
 					required="required" />
 				<form:errors class="error" path="password" />
 				<br/><br/>
+</div>
+<div style="float: left; margin-left: 200px; margin-top: 20px;">
 				<form:label path="vacaciones"
 					for="vacaciones">
 					<spring:message code="empleado.vacaciones" />
@@ -127,6 +129,5 @@
 				<button type="button" class="btn btn-secondary" onclick="window.history.back();" >
 					<spring:message code="empleado.cancelar" />
 				</button>
-		</form:form>
-	</div>
 </div>
+		</form:form>

@@ -17,11 +17,10 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <security:authorize access="isAnonymous()">
-
 <p><spring:message code="welcome.greeting" /></p>
 
 <p><spring:message code="welcome.greeting.current.time" /> ${moment}</p> 
-
+<div id="bienvenido"></div>
 </security:authorize>
 
 <security:authorize access="hasAnyRole('EMPLEADO', 'JEFEDEPARTAMENTO')">
@@ -37,11 +36,11 @@
 <jstl:choose>
 	<jstl:when test="${vacaciones.dias_totales-vacaciones.dias_usados=='0'}">
 		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" disabled>
-		Reservar</button>
+		<spring:message code="welcome.boton.reservas"/> </button>
 	</jstl:when>
 	<jstl:otherwise>
 		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-		Reservar</button>
+		<spring:message code="welcome.boton.reservas"/></button>
 	</jstl:otherwise>
 </jstl:choose>
 </p>
@@ -52,11 +51,11 @@
 <jstl:choose>
 	<jstl:when test="${diasPersonales.dias_totales-diasPersonales.dias_usados=='0'}">
 		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" disabled>
-		Reservar</button>
+		<spring:message code="welcome.boton.reservas"/></button>
 	</jstl:when>
 	<jstl:otherwise>
 		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
-		Reservar</button>
+		<spring:message code="welcome.boton.reservas"/></button>
 	</jstl:otherwise>
 </jstl:choose>
 
@@ -75,8 +74,8 @@
 </display:table>
 <security:authorize access="hasRole('JEFEDEPARTAMENTO')">
 <div id="adminbtn">
-	<button class="btn btn-primary" onclick="window.location.href='jefedepartamento/empleado/create.do'">Añadir Empleado</button>
-	<button class="btn btn-primary"  onclick="window.location.href='jefedepartamento/reservas/list.do'">Administrar reservas</button>
+	<button class="btn btn-primary" onclick="window.location.href='jefedepartamento/empleado/create.do'"><spring:message code="welcome.boton.usuarios"/></button>
+	<button class="btn btn-primary"  onclick="window.location.href='jefedepartamento/reservas/list.do'"><spring:message code="welcome.boton.admReservas"/></button>
 </div>
 </security:authorize>
 </div>
@@ -85,7 +84,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Añadir Vacaciones:</h5>
+        <h5 class="modal-title"><spring:message code="welcome.addVacaciones"/></h5>
         <button type="button" id="cerrar" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -98,11 +97,11 @@
 			<form:hidden path="tipo" value="Vacaciones"/>
 			<form:hidden path="empleado" />
 			
-        	&nbsp;&nbsp;&nbsp;&nbsp;Día de inicio: &nbsp;&nbsp;&nbsp;&nbsp;<form:input path="fecha" type="date" required="true"/>
+        	&nbsp;&nbsp;&nbsp;&nbsp;<spring:message code="welcome.dia"/> &nbsp;&nbsp;&nbsp;&nbsp;<form:input path="fecha" type="date" required="true"/>
         	<br/>
         	<div class="modal-footer">
-        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        		<button type="submit" name="save" class="btn btn-primary">Añadir</button>
+        		<button type="button" class="btn btn-secondary" data-dismiss="modal"><spring:message code="welcome.cancelar"/></button>
+        		<button type="submit" name="save" class="btn btn-primary"><spring:message code="welcome.guardar"/></button>
       		</div>
         </form:form>
       </div>
@@ -115,7 +114,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Añadir Dias Propios:</h5>
+        <h5 class="modal-title"><spring:message code="welcome.addDia"/></h5>
         <button type="button" id="cerrar" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -128,11 +127,11 @@
 			<form:hidden path="tipo" value="Dias Personales"/>
 			<form:hidden path="empleado" />
 			
-        	&nbsp;&nbsp;&nbsp;&nbsp;Día de inicio: &nbsp;&nbsp;&nbsp;&nbsp;<form:input path="fecha" type="date" required="true"/>
+        	&nbsp;&nbsp;&nbsp;&nbsp;<spring:message code="welcome.dia"/>&nbsp;&nbsp;&nbsp;&nbsp;<form:input path="fecha" type="date" required="true"/>
         	<br/>
         	<div class="modal-footer">
-        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        		<button type="submit" name="save" class="btn btn-primary">Añadir</button>
+        		<button type="button" class="btn btn-secondary" data-dismiss="modal"><spring:message code="welcome.cancelar"/></button>
+        		<button type="submit" name="save" class="btn btn-primary"><spring:message code="welcome.guardar"/></button>
       		</div>
         </form:form>
       </div>
