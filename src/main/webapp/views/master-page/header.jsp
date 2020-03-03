@@ -15,7 +15,7 @@
 
 <div class="cabecera">
 <div style="float: left;">
-	<a href="security/login.do"><img src="images/logo.png" alt="Gestor de Vacaciones 3.0"/></a>
+	<a href=""><img src="images/logo.png" alt="Gestor de Vacaciones 3.0"/></a>
 <br/>
 <!-- HREF para escoger el lenguaje -->
 <a id="lenguaje" href="?language=en">en</a> | <a href="?language=es">es</a>
